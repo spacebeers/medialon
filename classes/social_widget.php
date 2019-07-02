@@ -40,6 +40,27 @@
                             </a>
                         </li>
                     <?php endif; ?>
+                    <?php if (get_theme_mod( 'medialon_youtube')): ?>
+                        <li class="youtube">
+                            <a href="<?php echo get_theme_mod( 'medialon_youtube'); ?>" target="_blank">
+                                <img src="<?php bloginfo('template_directory'); ?>/assets/youtube.png" />
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if (get_theme_mod( 'medialon_instagram')): ?>
+                        <li class="instagram">
+                            <a href="<?php echo get_theme_mod( 'medialon_instagram'); ?>" target="_blank">
+                                <img src="<?php bloginfo('template_directory'); ?>/assets/instagram.png" />
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if (get_theme_mod( 'medialon_google')): ?>
+                        <li class="google">
+                            <a href="<?php echo get_theme_mod( 'medialon_google'); ?>" target="_blank">
+                                <img src="<?php bloginfo('template_directory'); ?>/assets/google.png" />
+                            </a>
+                        </li>
+                    <?php endif; ?>
                     <?php if (get_theme_mod( 'medialon_linkedin')): ?>
                         <li class="linkedin">
                             <a href="<?php echo get_theme_mod( 'medialon_linkedin'); ?>" target="_blank">

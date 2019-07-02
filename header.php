@@ -48,5 +48,4 @@
         </div>
     </header>
 
-    <div class="container">
-        <section id="main" class="content" role="main">
+    <section id="main" class="content" role="main">
