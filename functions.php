@@ -1,0 +1,200 @@
+<?php
+    include('classes/breadcrumbs.php');
+
+    // Menus
+	register_nav_menus( array(
+		'main_menu' => 'Main menu'
+	) );
+
+    add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+
+    function special_nav_class ($classes, $item) {
+        if (in_array('current-menu-item', $classes) ){
+            $classes[] = 'active ';
+        }
+        return $classes;
+    }
+
+    // Fonts
+    function wpb_add_google_fonts() {
+        wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:100,300,600', false );
+    }
+
+    add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
+
+    // Vendor scripts
+    function medialon_theme_name_scripts() {
+        wp_enqueue_script( 'app', get_template_directory_uri() . '/scripts/app.js', array ( 'jquery' ), 1.1, true);
+    }
+    add_action( 'wp_enqueue_scripts', 'medialon_theme_name_scripts' );
+
+	// Post support
+	add_theme_support( 'post-thumbnails' );
+	set_post_thumbnail_size( 825, 510, true );
+    add_post_type_support( 'page', 'excerpt' );
+
+
+	// Theme customisers
+	function medialon_theme_customizer( $wp_customize ) {
+		// Logo section
+        $wp_customize->add_section( 'medialon_logo_section' , array(
+			'title'       => __( 'Logo', 'medialon' ),
+			'priority'    => 30,
+			'description' => 'Upload a logo to replace the default site name and description in the header',
+		));
+
+		$wp_customize->add_setting( 'medialon_logo' );
+
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'medialon_logo', array(
+		    'label'    => __( 'Logo', 'medialon' ),
+		    'section'  => 'medialon_logo_section',
+		    'settings' => 'medialon_logo',
+        )));
+
+        // Social section
+        $wp_customize->add_section( 'medialon_social_section' , array(
+			'title'       => __( 'Social links', 'medialon' ),
+			'priority'    => 30,
+			'description' => 'Set links to social accounts here',
+        ));
+
+        $wp_customize->add_setting( 'medialon_facebook' );
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'medialon_facebook', array(
+		    'label'    => __( 'Facebook', 'medialon' ),
+		    'section'  => 'medialon_social_section',
+		    'settings' => 'medialon_facebook',
+            'type'			 => 'text'
+        )));
+
+        $wp_customize->add_setting( 'medialon_instagram' );
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'medialon_instagram', array(
+		    'label'    => __( 'Instagram', 'medialon' ),
+		    'section'  => 'medialon_social_section',
+		    'settings' => 'medialon_instagram',
+            'type'			 => 'text'
+		)));
+
+		$wp_customize->add_setting( 'medialon_twitter' );
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'medialon_twitter', array(
+		    'label'    => __( 'Twitter', 'medialon' ),
+		    'section'  => 'medialon_social_section',
+		    'settings' => 'medialon_twitter',
+            'type'			 => 'text'
+        )));
+
+		$wp_customize->add_setting( 'medialon_youtube' );
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'medialon_youtube', array(
+		    'label'    => __( 'Youtube', 'medialon' ),
+		    'section'  => 'medialon_social_section',
+		    'settings' => 'medialon_youtube',
+            'type'			 => 'text'
+        )));
+
+		$wp_customize->add_setting( 'medialon_google' );
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'medialon_google', array(
+		    'label'    => __( 'Google Plus', 'medialon' ),
+		    'section'  => 'medialon_social_section',
+		    'settings' => 'medialon_google',
+            'type'			 => 'text'
+        )));
+
+        $wp_customize->add_setting( 'medialon_linkedin' );
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'medialon_linkedin', array(
+		    'label'    => __( 'LinkedIn', 'medialon' ),
+		    'section'  => 'medialon_social_section',
+		    'settings' => 'medialon_linkedin',
+            'type'			 => 'text'
+        )));
+
+        function medialon_sanitize_dropdown_pages( $page_id, $setting ) {
+            // Ensure $input is an absolute integer.
+            $page_id = absint( $page_id );
+
+            // If $page_id is an ID of a published page, return it; otherwise, return the default.
+            return ( 'publish' == get_post_status( $page_id ) ? $page_id : $setting->default );
+        }
+	}
+
+    add_action( 'customize_register', 'medialon_theme_customizer' );
+
+    /**
+    * Register widgetized area and update sidebar with default widgets
+    */
+    function medialon_widgets_init() {
+        register_sidebar( array(
+            'name' => __( 'Footer area one', 'medialon' ),
+            'id' => 'footer-area-one-sidebar',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => "</aside>",
+            'before_title' => '<div class="widget-title">',
+            'after_title' => '</div>',
+        ));
+
+        register_sidebar( array(
+            'name' => __( 'Footer area two', 'medialon' ),
+            'id' => 'footer-area-two-sidebar',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => "</aside>",
+            'before_title' => '<div class="widget-title">',
+            'after_title' => '</div>',
+        ));
+
+        register_sidebar( array(
+            'name' => __( 'Footer area three', 'medialon' ),
+            'id' => 'footer-area-three-sidebar',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => "</aside>",
+            'before_title' => '<div class="widget-title">',
+            'after_title' => '</div>',
+        ));
+
+        register_sidebar( array(
+            'name' => __( 'Footer area four', 'medialon' ),
+            'id' => 'footer-area-four-sidebar',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => "</aside>",
+            'before_title' => '<div class="widget-title">',
+            'after_title' => '</div>',
+        ));
+
+        register_sidebar( array(
+            'name' => __( 'Footer area five', 'medialon' ),
+            'id' => 'footer-area-five-sidebar',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => "</aside>",
+            'before_title' => '<div class="widget-title">',
+            'after_title' => '</div>',
+        ));
+
+        register_sidebar( array(
+            'name' => __( 'Footer information area', 'medialon' ),
+            'id' => 'footer-information-area-sidebar',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => "</aside>",
+            'before_title' => '<div class="widget-title">',
+            'after_title' => '</div>',
+        ));
+    }
+
+    add_action( 'widgets_init', 'medialon_widgets_init' );
+
+    // Custom post types
+   function create_posttype() {
+        register_post_type('products',
+            array(
+                'labels' => array(
+                    'name' => __( 'Products' ),
+                    'singular_name' => __( 'Product' )
+                ),
+                'public' => true,
+                'has_archive' => false,
+                'rewrite' => array('slug' => 'products'),
+                'supports' => array('title', 'editor', 'thumbnail'),
+            )
+        );
+    }
+
+    flush_rewrite_rules();
+
+    add_action( 'init', 'create_posttype' );
+?>
