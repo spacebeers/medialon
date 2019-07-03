@@ -1,25 +1,7 @@
 <div class="posts-grid">
-    <?php if (have_posts()): while (have_posts()) : the_post();
-        $tags = array();
-        $cats = get_the_category();
-        foreach ($cats as $value):
-            array_push($tags, $value->slug);
-        endforeach;
-        array_push($tags, "blog-article");
-        array_push($tags, "mix");
-        $string = implode(' ', $tags);
-    ?>
-
+    <?php if (have_posts()): while (have_posts()) : the_post();  ?>
         <!-- article -->
         <article id="post-<?php the_ID(); ?>" <?php post_class($string); ?>>
-            <!-- post thumbnail -->
-            <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
-                <div class="post-image">
-                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>);">
-                    </a>
-                </div>
-            <?php endif; ?>
-            <!-- /post thumbnail -->
             <div class="post-main">
                 <!-- post title -->
                 <h2>
@@ -27,10 +9,19 @@
                 </h2>
                 <!-- /post title -->
 
-                <?php medialon_excerpt('medialon_index'); // Build your custom callback length in functions.php ?>
-
-                <a href="<?php the_permalink(); ?>" class="more-link">Read more</a>
+                <?php the_excerpt(); ?>
             </div>
+            <!-- post thumbnail -->
+            <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
+                <div class="post-image">
+                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                        <?php the_post_thumbnail(); ?>
+                    </a>
+                </div>
+            <?php endif; ?>
+            <!-- /post thumbnail -->
+
+            <?php echo file_get_contents(get_template_directory_uri() . '/assets/slash.svg'); ?>
         </article>
         <!-- /article -->
     <?php endwhile; ?>

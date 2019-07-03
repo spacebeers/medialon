@@ -16,10 +16,6 @@
 <body <?php body_class($page_class); ?>>
     <header class="site-header" id="header">
         <div class="container">
-            <a class="logo" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'>
-                <img src='<?php echo esc_url( get_theme_mod( 'medialon_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'>
-            </a>
-
             <button hidden aria-label="Click to open menu" class="menu-button" id="nav">
                 <svg width="20px" height="20px" viewBox="0 0 20 18">
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -29,6 +25,10 @@
                     </g>
                 </svg>
             </button>
+
+            <a class="logo" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'>
+                <img src='<?php echo esc_url( get_theme_mod( 'medialon_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'>
+            </a>
 
             <nav id="main-menu">
                 <?php wp_nav_menu(array(

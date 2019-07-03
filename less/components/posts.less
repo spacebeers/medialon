@@ -1,98 +1,80 @@
-#filters {
-    margin: 30px 0;
-
-    ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-
-        li {
-            margin: 5px;
-            font-style: italic;
-        }
-
-        .key {
-            font-style: normal;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    }
-}
-
-.blog .contents {
-    margin-top: 150px;
-    text-align: center;
-}
 
 .posts-grid {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
     flex-wrap: wrap;
-
-    @media (min-width: @screen-sm-min) {
-        flex-direction: row;
-        margin: 0 -1%;
-    }
+    margin-right: -9px;
+    margin-left: -9px;
 
     & > article {
-        flex: 0 0 100%;
-        margin: 0 0 30px 0;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: ~"calc(100% - 18px)";
+        max-width: ~"calc(100% - 18px)";
+        margin: 0 9px 16px 9px;
+
         @media (min-width: @screen-sm-min) {
-            flex: 0 0 46%;
-            margin: 0 2% 30px 2%;
+            flex-basis: ~"calc(50% - 18px)";
+            max-width: ~"calc(50% - 18px)";
+        }
+        background: @palette-lightest;
+        transition: background-color @ani-speed linear;
+        padding: 20px;
+
+        &:hover {
+            background: @primary;
+
+            h2 {
+                color: @palette-lightest;
+            }
+
+            p {
+                color: @palette-lightest;
+            }
         }
 
-        background: @palette-light;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: @primary-font;
-
         h2 {
-            line-height: 1.2
+            line-height: 1.2;
+            color: @primary;
+            font-weight: @weight-semibold;
+
+            a {
+                color: currentColor;
+                transition: color @ani-speed linear;
+            }
         }
 
         a {
             text-decoration: none;
         }
-    }
 
-    .post-image {
-        width: 100%;
+        p {
+            transition: color @ani-speed linear;
+        }
 
-        a {
-            display: block;
-            height: 200px;
-            margin-bottom: 20px;
-            background-repeat: no-repeat;
-            background-size: cover;
+        svg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            height: 100%;
+            opacity: 0.4;
         }
     }
 
-    .post-main {
-        padding: 10px 20px 25px 20px;
-        text-align: center;
-    }
-}
-
-.post-contents {
-    background: white;
-    color: black;
-    margin-top: 50px;
-    border: 1px solid rgba(214, 214, 214, 0.3215686274509804);
-    z-index: 1;
-    position: relative;
-
-    .post-content {
-        padding: 30px;
-    }
-
     .post-image {
-        width: 100%;
-        height: auto;
+        position: relative;
+        z-index: 1;
+        flex: 0 0 100%;
+        @media (min-width: @screen-sm-min) {
+            flex: 0 0 49%;
+        }
 
         img {
             width: 100%;
@@ -100,39 +82,12 @@
         }
     }
 
-    h1 {
-    }
-}
-
-.related-content {
-    background: @primary;
-    position: relative;
-    margin-top: 165px;
-
-    &::before {
-        content: "";
-        margin: 0;
-        height: 130px;
-        background: @primary;
-        border-top: 20px solid @secondary;
-        display: block;
-        width: 110vw;
-        top: -85px;
-        z-index: -1;
-        position: absolute;
-        transform: translateX(-5vw) rotate(-5deg);
-        -ms-transform: translateX(-5vw) rotate(-5deg);
-        transform: translateX(-5vw) rotate(-5deg);
-    }
-
-    .post-grid {
+    .post-main {
         position: relative;
         z-index: 1;
-    }
-
-    h2 {
-        color: white;
-        text-align: center;
-        margin-bottom: 40px;
+        flex: 0 0 100%;
+        @media (min-width: @screen-sm-min) {
+            flex: 0 0 49%;
+        }
     }
 }

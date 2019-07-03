@@ -3,10 +3,10 @@ p {
 }
 
 a {
-    transition: opacity @ani-speed ease-in;
+    transition: color @ani-speed ease-in;
 
     &:hover {
-        opacity: 0.8;
+        color: @primary;
         text-decoration: none;
     }
 }
@@ -55,6 +55,7 @@ h2 {
     color: @body-text-color;
     margin-bottom: 30px;
     font-size: 2.4rem;
+    line-height: 1.4;
     @media (min-width: @screen-sm-min) {
         font-size: 3rem;
     }

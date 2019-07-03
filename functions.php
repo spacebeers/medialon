@@ -1,4 +1,5 @@
 <?php
+    include('classes/social_widget.php');
     include('classes/breadcrumbs.php');
 
     // Menus
@@ -187,9 +188,9 @@
                     'singular_name' => __( 'Product' )
                 ),
                 'public' => true,
-                'has_archive' => false,
+                'has_archive' => true,
                 'rewrite' => array('slug' => 'products'),
-                'supports' => array('title', 'editor', 'thumbnail'),
+                'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
             )
         );
     }
@@ -197,4 +198,17 @@
     flush_rewrite_rules();
 
     add_action( 'init', 'create_posttype' );
+
+    // Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
+    function medialon_pagination()
+    {
+        global $wp_query;
+        $big = 999999999;
+        echo paginate_links(array(
+            'base' => str_replace($big, '%#%', get_pagenum_link($big)),
+            'format' => '?paged=%#%',
+            'current' => max(1, get_query_var('paged')),
+            'total' => $wp_query->max_num_pages
+        ));
+    }
 ?>

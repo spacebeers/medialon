@@ -1,4 +1,5 @@
 .site-footer {
+    margin-top: 75px;
     border-top: 1px @seperator-color solid;
     font-size: 1.3rem;
     color: @palette-mid-light;
@@ -6,10 +7,51 @@
     a {
         color: currentColor;
         text-decoration: none;
+
+        &:hover {
+            color: @primary;
+        }
     }
 
     .footer-columns {
         padding: 30px 0 15px 0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .widget-title {
+        color: @primary;
+        font-weight: @weight-semibold;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        position: relative;
+        padding-top: 20px;
+        margin-top: 0;
+
+        &::before, &::after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        &::before {
+            background-color: @primary;
+        }
+
+        &::after {
+            background-color: @secondary;
+            left: 20px;
+        }
     }
 }
 

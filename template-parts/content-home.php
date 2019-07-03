@@ -4,38 +4,58 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("page"); ?>>
-    <div class="container">
-        <div class="hero">
-           <img src="<?php echo $hero_image['url']; ?>" alt="<?php echo $hero_image['alt'] ?>" />
-        </div>
-        <section class="contents">
-            <h1><?php the_title(); ?></h1>
 
-            <?php the_content(); ?>
+    <section class="container">
+        <div class="tabs-wrapper">
+            <h2>Medialon products</h2>
+            <?php
+            $the_query = new WP_Query('post_type=products');?>
+            <ul class="tabs">
+                <?php
+                    $x = 0;
+                    while ($the_query->have_posts()) : $the_query->the_post();
+                ?>
+                        <li rel="tab_<?php the_id(); ?>" class="<?php if ($x == 0): echo 'active'; endif; ?>">
+                            <?php the_post_thumbnail(); ?>
+                            <?php the_title(); ?>
+                        </li>
+                <?php
+                    $x++;
+                    endwhile;
+                    wp_reset_query();
+                ?>
+            </ul>
+            <div class="tab_container">
+                <?php
+                    $i = 0;
+                    while ($the_query->have_posts()) : $the_query->the_post();
+                ?>
+                    <h3 class="<?php if ($i == 0): echo 'd_active'; endif; ?> tab_drawer_heading" rel="tab_<?php the_id(); ?>">
+                        <?php the_post_thumbnail(); ?>
+                        <?php the_title(); ?>
+                    </h3>
+                    <div id="tab_<?php the_id(); ?>" class="tab_content">
+                        <div class="tab-product-content">
+                            <h4><?php the_title(); ?></h4>
+                            <p><?php the_excerpt(); ?></p>
 
-            <?php edit_post_link( __( 'Edit', 'medialon' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
-        </section>
-    </div>
-    <div class="strip-image">
-        <div class="parallaxed" style="background-image: url(<?php echo $strip_image['url']; ?>);"></div>
-    </div>
-
-    <?php
-        // vars
-        $secondary_content = get_field('secondary_content');
-
-        if( $secondary_content ): ?>
-            <div class="secondary_contents">
-                <div class="inner">
-                    <div class="image">
-                        <img src="<?php echo $secondary_content['image']['url']; ?>" alt="<?php echo $secondary_content['image']['alt']; ?>" />
-                    </div>
-                    <div class="content">
-                        <div class="content-inner">
-                            <?php echo $secondary_content['content']; ?>
+                            <a href="<?php the_permalink();?>" class="btn btn-primary">Learn more</a>
                         </div>
+                        <div class="tab-product-image">
+                            <?php the_post_thumbnail('full'); ?>
+                        </div>
+
+
                     </div>
-                </div>
+                <?php
+                    $i++;
+                    endwhile;
+                    wp_reset_query();
+                ?>
             </div>
-    <?php endif; ?>
+        </div>
+    </section>
+    <section class="container">
+        <?php the_content(); ?>
+    </section>
 </article>

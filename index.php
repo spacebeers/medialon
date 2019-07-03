@@ -1,3 +1,4 @@
+INDEX
 <?php get_header(); ?>
 
 	<div id="primary" class="content-area">

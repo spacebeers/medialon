@@ -1,3 +1,45 @@
 .site-header {
     border-bottom: 1px solid @seperator-color;
+    padding-bottom: 15px;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .logo {
+        width: 226px;
+        display: inline-block;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: inherit;
+        }
+    }
+
+    nav {
+        display: flex;
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: @palette-dark;
+
+        &:hover {
+            color: @primary;
+        }
+    }
+
+    li + li {
+        margin-left: 31px;
+    }
 }
