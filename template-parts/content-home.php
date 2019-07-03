@@ -39,7 +39,12 @@
                             <h4><?php the_title(); ?></h4>
                             <p><?php the_excerpt(); ?></p>
 
-                            <a href="<?php the_permalink();?>" class="btn btn-primary">Learn more</a>
+                            <?php include( locate_template( 'template-parts/content-icon-list.php', false, false ) ); ?>
+
+                            <a href="<?php the_permalink();?>" class="btn btn-primary">
+                                <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                Learn more
+                            </a>
                         </div>
                         <div class="tab-product-image">
                             <?php the_post_thumbnail('full'); ?>

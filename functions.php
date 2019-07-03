@@ -18,7 +18,7 @@
 
     // Fonts
     function wpb_add_google_fonts() {
-        wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:100,300,600', false );
+        wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:100,300,400,600', false );
     }
 
     add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );

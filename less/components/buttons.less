@@ -1,0 +1,31 @@
+.btn {
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    background: grey;
+    border-radius: 6px;
+    display: inline-block;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+        height: 20px;
+        margin: 0 7px 0 0;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: currentColor;
+    }
+}
+
+.btn-primary {
+    background: @primary;
+    color: @palette-lightest;
+}
+
+.btn-secondary {
+    background: @secondary;
+    color: @palette-lightest;
+}

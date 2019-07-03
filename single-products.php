@@ -13,6 +13,23 @@
 
                         <?php the_excerpt(); ?>
 
+                        <?php include( locate_template( 'template-parts/content-icon-list.php', false, false ) ); ?>
+
+                        <ul class="button-list">
+                            <li>
+                                <a href="" class="btn btn-primary">
+                                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                    Get a quote now
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="btn btn-secondary">
+                                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/location-white.svg'); ?>
+                                    Where to buy
+                                </a>
+                            </li>
+                        </ul>
+
                         <?php edit_post_link(); ?>
                     </div>
 
