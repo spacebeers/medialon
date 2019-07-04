@@ -199,6 +199,12 @@
 
     add_action( 'init', 'create_posttype' );
 
+    // Register and load the widget
+    function wpb_load_widget() {
+        register_widget( 'wpb_social_widget' );
+    }
+    add_action( 'widgets_init', 'wpb_load_widget' );
+
     // Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
     function medialon_pagination()
     {

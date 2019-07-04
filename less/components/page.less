@@ -9,6 +9,30 @@
     }
 }
 
+.tabs-header {
+    text-align: center;
+    padding: 50px 0 20px 0;
+}
+
+.slash-image {
+    display: none;
+    @media (min-width: @screen-sm-min) {
+        display: block;
+    }
+    width: 55%;
+    position: absolute;
+    top: 0;
+    right: -35px;
+    z-index: 1;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: auto;
+        float: right;
+    }
+}
+
 .icon-list {
     list-style: none;
     margin: 0 0 30px 0;

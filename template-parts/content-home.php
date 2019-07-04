@@ -1,16 +1,40 @@
 <?php
-    $hero_image = get_field('hero_image');
-    $strip_image = get_field('strip_image');
+    $image = get_field('hero_image');
+    $size = 'full'; // (thumbnail, medium, large, full or custom size)
 ?>
 
+<div class="slash-image" role="presentation">
+    <?php the_post_thumbnail("full"); ?>
+</div>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class("page"); ?>>
+    <div class="hero" style="background-image: url(<?php echo $image['url']; ?>); background-size: auto; background-position: center;">
+        <div class="container">
+            <div class="hero-content">
+                <?php the_field('hero_contents'); ?>
+
+                <a href="" class="btn btn-primary">
+                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                    Discover our products
+                </a>
+            </div>
+        </div>
+    </div>
 
     <section class="container">
         <div class="tabs-wrapper">
-            <h2>Medialon products</h2>
+            <div class="tabs-header">
+                <p>Show control solution</p>
+
+                <h2>
+                    <?php the_field('products_section_heading'); ?>
+                </h2>
+
+                <p>Medialon products</p>
+            </div>
             <?php
             $the_query = new WP_Query('post_type=products');?>
-            <ul class="tabs">
+            <ul class="tabs home-tabs">
                 <?php
                     $x = 0;
                     while ($the_query->have_posts()) : $the_query->the_post();
@@ -25,7 +49,7 @@
                     wp_reset_query();
                 ?>
             </ul>
-            <div class="tab_container">
+            <div class="tab_container home-tab-container">
                 <?php
                     $i = 0;
                     while ($the_query->have_posts()) : $the_query->the_post();
@@ -36,8 +60,8 @@
                     </h3>
                     <div id="tab_<?php the_id(); ?>" class="tab_content">
                         <div class="tab-product-content">
-                            <h4><?php the_title(); ?></h4>
-                            <p><?php the_excerpt(); ?></p>
+                            <h4 class="product-tab-title"><?php the_title(); ?></h4>
+                            <?php the_excerpt(); ?>
 
                             <?php include( locate_template( 'template-parts/content-icon-list.php', false, false ) ); ?>
 
@@ -61,6 +85,26 @@
         </div>
     </section>
     <section class="container">
-        <?php the_content(); ?>
+        <div class="content-row">
+            <div class="content-column">
+                <?php the_content(); ?>
+            </div>
+            <div class="content-column">
+                <?php $file = get_field('press_release_link'); ?>
+                <?php if ($file): ?>
+                    <div class="press-release-box">
+                        <h2>Press release</h2>
+                        <?php the_field('products_section_heading'); ?>
+                        <p>
+                            <a href="<?php echo $file['url']; ?>" class="btn btn-primary" download target="_blank">
+                                <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                Read the press release
+                            </a>
+                        </p>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
     </section>
 </article>

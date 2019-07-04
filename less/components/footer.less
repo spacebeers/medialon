@@ -15,8 +15,10 @@
 
     .footer-columns {
         padding: 30px 0 15px 0;
-        display: flex;
-        justify-content: space-between;
+        @media (min-width: @screen-sm-min) {
+            display: flex;
+            justify-content: space-between;
+        }
     }
 
     ul {

@@ -1,3 +1,7 @@
+<div class="slash-image" role="presentation">
+    <?php the_post_thumbnail("full"); ?>
+</div>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class("contact-page"); ?>>
     <section class="container">
         <div class="contents">

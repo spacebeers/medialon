@@ -3,7 +3,7 @@
         <div class="post-contents">
             <?php if (have_posts()): while (have_posts()) : the_post(); ?>
             <section class="container">
-                <div class="hero">
+                <div class="">
                     <div class="post-content">
                         <?php custom_breadcrumbs(); ?>
 
@@ -15,20 +15,12 @@
 
                         <?php include( locate_template( 'template-parts/content-icon-list.php', false, false ) ); ?>
 
-                        <ul class="button-list">
-                            <li>
-                                <a href="" class="btn btn-primary">
-                                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
-                                    Get a quote now
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="btn btn-secondary">
-                                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/location-white.svg'); ?>
-                                    Where to buy
-                                </a>
-                            </li>
-                        </ul>
+                        <p>
+                            <a href="" class="btn btn-primary">
+                                <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                Get a quote now
+                            </a>
+                        </p>
 
                         <?php edit_post_link(); ?>
                     </div>

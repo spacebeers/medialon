@@ -1,5 +1,3 @@
-HOME
-
 <?php
     get_header(); ?>
 

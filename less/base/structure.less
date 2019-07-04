@@ -63,3 +63,33 @@ body {
         background: @palette-highlight;
     }
 }
+
+.content-row {
+    @media (min-width: @screen-sm-min) {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .content-column {
+        flex: 1;
+    }
+}
+
+.press-release-box {
+    background: @secondary;
+    color: @palette-lightest;
+    padding: 20px;
+
+    @media (min-width: @screen-sm-min) {
+        margin: 45px 0 45px 45px;
+    }
+
+    h2 {
+        color: currentColor;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+    }
+}

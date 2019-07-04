@@ -9,5 +9,8 @@
 
             <?php edit_post_link( __( 'Edit', 'medialon' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
         </div>
+        <div class="slash-image">
+            <?php the_post_thumbnail("full"); ?>
+        </div>
     </section>
 </article>

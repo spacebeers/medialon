@@ -19,8 +19,37 @@
     }
 }
 
+.product-tab-title {
+    color: @primary;
+    font-size: 40px;
+    font-weight: @weight-semibold;
+    position: relative;
+    margin-bottom: 25px;
+
+    &::before {
+        content: "Products";
+        display: block;
+        color: @secondary;
+        font-size: 1.6rem;
+        font-weight: @weight-bold;
+        margin-bottom: 10px;
+    }
+
+    & + p {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+    }
+}
+
+.title-prefix {
+    color: @secondary;
+    margin: 0;
+    padding: 0;
+}
+
 .product-content {
     display: flex;
+    flex-wrap: wrap;
 
     .tabs-wrapper {
         flex: 0 0 100%;
@@ -39,7 +68,7 @@
 
 .related-content {
     background: @palette-lightest;
-    padding: 25px 20px;
+    padding: 30px 40px;
     margin-top: 35px;
 
     h2 {
