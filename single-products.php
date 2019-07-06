@@ -4,53 +4,79 @@
             <?php if (have_posts()): while (have_posts()) : the_post(); ?>
             <section class="container">
                 <div class="">
-                    <div class="post-content">
+                    <div class="product-post-content">
                         <?php custom_breadcrumbs(); ?>
+                        <?php echo file_get_contents(get_template_directory_uri() . '/assets/slash.svg'); ?>
 
-                        <!-- post title -->
-                        <h1><?php the_title(); ?></h1>
-                        <!-- /post title -->
+                        <div class="product-hero">
+                            <div class="product-hero-content">
+                                <!-- post title -->
+                                <h1><?php the_title(); ?></h1>
+                                <!-- /post title -->
 
-                        <?php the_excerpt(); ?>
+                                <?php the_excerpt(); ?>
 
-                        <?php include( locate_template( 'template-parts/content-icon-list.php', false, false ) ); ?>
+                                <?php include( locate_template( 'template-parts/content-icon-list.php', false, false ) ); ?>
 
-                        <p>
-                            <a href="" class="btn btn-primary">
-                                <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
-                                Get a quote now
-                            </a>
-                        </p>
+                                <p>
+                                    <a href="" class="btn btn-primary btn-block-xs">
+                                        <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                        Get a quote now
+                                    </a>
+                                </p>
 
-                        <?php edit_post_link(); ?>
-                    </div>
+                                <?php edit_post_link(); ?>
+                            </div>
 
-                    <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
-                        <div class="post-image">
-                            <?php the_post_thumbnail("full"); ?>
+                            <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
+                                <div class="product-hero-image">
+                                    <?php the_post_thumbnail("full"); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                    <?php endif; ?>
+                    </div>
                 </div>
             </section>
 
             <div class="strip highlight">
                 <div class="container">
                     <div class="product-content">
-                        <div class="tabs-wrapper">
+                        <div class="tabs-wrapper product-tabs">
                             <ul class="tabs">
                                 <li rel="tab1" class="active">Overview</li>
-                                <li rel="tab2">Specifications</li>
-                                <li rel="tab3">Downloads & Support</li>
+                                <li rel="tab2">Spec<span>ifications</span></li>
+                                <li rel="tab3">Downloads <span>& Support</span></li>
                             </ul>
                             <div class="tab_container">
                                 <h3 class="d_active tab_drawer_heading" rel="tab1">Overview</h3>
-                                <div id="tab1" class="tab_content">
+                                <div id="tab1" class="tab_content tab_overview">
+                                    <?php
+                                        $image = get_field('overview_image');
+                                        $size = 'medium';
+                                    ?>
+
+                                    <div class="overview-image">
+                                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+                                    </div>
+
                                     <?php the_content(); ?>
                                 </div>
                                 <!-- #tab1 -->
                                 <h3 class="tab_drawer_heading" rel="tab2">Specifications</h3>
                                 <div id="tab2" class="tab_content">
-                                    Spec table
+                                    <h2 class="flair">Product Specifications</h2>
+                                    <?php if( have_rows('specification_table') ): ?>
+                                        <table class="spec-table">
+                                            <?php while ( have_rows('specification_table') ) : the_row(); ?>
+                                                <tr>
+                                                    <td><?php the_sub_field('heading'); ?></td>
+                                                    <td><?php the_sub_field('content'); ?></td>
+                                                </tr>
+                                            <?php endwhile; ?>
+                                        </table>
+                                        <?php else : ?>
+                                            <p>No specs found</p>
+                                    <?php endif; ?>
                                 </div>
                                 <!-- #tab2 -->
                                 <h3 class="tab_drawer_heading" rel="tab3">Downloads & Support</h3>
@@ -66,7 +92,27 @@
                             </div>
                         </div>
                         <div class="sidebar">
-                            sidebar
+                            <a href="" class="btn btn-primary btn-block">
+                                <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                Get a quote now
+                            </a>
+
+                            <div class="block block-secondary-dark">
+                                <?php
+
+                                    $file = get_field('spec_sheet');
+
+                                    if ( $file ):
+                                        $url = wp_get_attachment_url( $file ); ?>
+                                        <div class="block">
+                                            <h2>Download the tech sheet</h2>
+                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
+                                            <a href="<?php echo $url; ?>" class="btn btn-secondary">
+                                                <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                                Download File
+                                            </a>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>

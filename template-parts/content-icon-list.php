@@ -10,7 +10,7 @@
 	?>
 
 		<li>
-			<?php echo file_get_contents(get_template_directory_uri() . '/assets/' . $icon . '.svg'); ?>
+			<img src="<?php echo get_template_directory_uri() . '/assets/' . $icon . '.png'; ?>"  />
     	    <?php echo $content; ?>
 		</li>
 

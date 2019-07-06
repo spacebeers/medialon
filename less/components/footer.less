@@ -24,7 +24,19 @@
     ul {
         list-style: none;
         margin: 0;
-        padding: 0;
+        padding: 0 0 15px 0;
+    }
+
+    .social-list {
+        display: flex;
+    }
+
+    .widget_wpb_soical_widget {
+        .widget-title {
+            &::before, &::after {
+                display: none;
+            }
+        }
     }
 
     .widget-title {

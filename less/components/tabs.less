@@ -62,6 +62,10 @@
 		overflow: hidden;
 		position: relative;
 		transition: color @ani-speed linear, background-color @ani-speed linear;
+		text-align: center;
+		@media (max-width: @screen-xs-max) {
+			flex: 1;
+		}
 
 		&:hover {
 			background-color: @primary;
@@ -72,6 +76,12 @@
 			background-color: @primary;
 			color: @palette-lightest;
 			display: block;
+		}
+
+		span {
+			@media (max-width: @screen-xs-max) {
+				display: none;
+			}
 		}
 	}
 }
@@ -130,65 +140,67 @@
 .tab_drawer_heading { display: none; }
 
 @media (max-width: @screen-xs-max) {
-	.tabs {
-		display: none !important;
-	}
-
-	.tab_drawer_heading {
-		background-color: #ccc;
-		color: #fff;
-		border-top: 1px solid #333;
-		margin: 0;
-		padding: 5px 20px;
-		display: block;
-		cursor: pointer;
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-	}
-
-	.home-tab-container .tab_drawer_heading {
-		background: #FCF9F9;
-		border: none;
-		color: @primary;
-		display: flex;
-		align-items: center;
-		padding: 10px 0;
-		margin-bottom: 2px;
-		position: relative;
-
-		&::after {
-			content: "";
-			width: 0;
-			height: 0;
-			border-style: solid;
-			border-width: 10px 7.5px 0 7.5px;
-			border-color: @primary transparent transparent transparent;
-			position: absolute;
-			top: 50%;
-			right: 20px;
-			transform: translateY(-50%);
+	.tabs-wrapper:not(.product-tabs) {
+		.tabs {
+			display: none !important;
 		}
 
+		.tab_drawer_heading {
+			background-color: #ccc;
+			color: #fff;
+			border-top: 1px solid #333;
+			margin: 0;
+			padding: 5px 20px;
+			display: block;
+			cursor: pointer;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
 
-		&.d_active {
+		.home-tab-container .tab_drawer_heading {
+			background: #FCF9F9;
+			border: none;
+			color: @primary;
+			display: flex;
+			align-items: center;
+			padding: 10px 0;
+			margin-bottom: 2px;
+			position: relative;
+
 			&::after {
-				transform: rotateX(180deg);
+				content: "";
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 10px 7.5px 0 7.5px;
+				border-color: @primary transparent transparent transparent;
+				position: absolute;
+				top: 50%;
+				right: 20px;
+				transform: translateY(-50%);
+			}
+
+
+			&.d_active {
+				&::after {
+					transform: rotateX(180deg);
+				}
+			}
+
+			img {
+				width: 80px;
+				height: auto;
+				margin-right: 20px;
 			}
 		}
 
-		img {
-			width: 80px;
-			height: auto;
-			margin-right: 20px;
+		.d_active {
+			background-color: #666;
+			color: #fff;
 		}
-	}
-
-	.d_active {
-		background-color: #666;
-		color: #fff;
 	}
 }
