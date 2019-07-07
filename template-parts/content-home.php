@@ -73,8 +73,6 @@
                         <div class="tab-product-image">
                             <?php the_post_thumbnail('full'); ?>
                         </div>
-
-
                     </div>
                 <?php
                     $i++;

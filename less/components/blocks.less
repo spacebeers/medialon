@@ -1,5 +1,6 @@
 .block {
     padding: 30px 20px;
+    margin-bottom: 30px;
     color: @palette-lightest;
 
     h2, h3, h4 {
@@ -8,6 +9,9 @@
         margin-top: 0;
     }
 
+    &.block-dark {
+        background: #484848;
+    }
     &.block-primary {
         background: @primary;
     }
@@ -20,4 +24,8 @@
     &.block-secondary-dark {
         background: @secondary-dark;
     }
+}
+
+.block-button {
+    margin-bottom: 30px;
 }

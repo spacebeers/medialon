@@ -19,7 +19,7 @@
                                 <?php include( locate_template( 'template-parts/content-icon-list.php', false, false ) ); ?>
 
                                 <p>
-                                    <a href="" class="btn btn-primary btn-block-xs">
+                                    <a href="" class="btn btn-primary-xs">
                                         <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
                                         Get a quote now
                                     </a>
@@ -92,26 +92,46 @@
                             </div>
                         </div>
                         <div class="sidebar">
-                            <a href="" class="btn btn-primary btn-block">
+                            <a href="" class="btn btn-primary btn-block block-button">
                                 <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
                                 Get a quote now
                             </a>
 
-                            <div class="block block-secondary-dark">
-                                <?php
 
-                                    $file = get_field('spec_sheet');
+                            <?php
+                                $file = get_field('spec_sheet');
 
-                                    if ( $file ):
-                                        $url = wp_get_attachment_url( $file ); ?>
-                                        <div class="block">
-                                            <h2>Download the tech sheet</h2>
-                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
-                                            <a href="<?php echo $url; ?>" class="btn btn-secondary">
-                                                <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
-                                                Download File
-                                            </a>
-                                <?php endif; ?>
+                                if ( $file ):
+                                    $url = wp_get_attachment_url( $file ); ?>
+                                    <div class="block block-secondary-dark">
+                                        <h2>Download the tech sheet</h2>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
+                                        <a href="<?php echo $url; ?>" target="_blank" download class="btn btn-secondary">
+                                            <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                            Download File
+                                        </a>
+                                    </div>
+                            <?php endif; ?>
+
+                            <div class="block block-primary">
+                                <h2>Contact Support</h2>
+                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
+                                <a href="#ex1" rel="modal:open" class="btn">
+                                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                    Contact Support
+                                </a>
+                                <div id="ex1" class="modal">
+                                    <?php echo do_shortcode('[wpforms id="81"]'); ?>
+                                </div>
+                            </div>
+
+                            <div class="block block-dark">
+                                <h2>Register your software</h2>
+                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
+                                <a href="<?php echo get_theme_mod( 'medialon_pages_registration_link' ); ?>" class="btn btn-primary">
+                                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                    Register
+                                </a>
                             </div>
                         </div>
                     </div>

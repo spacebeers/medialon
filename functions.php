@@ -26,8 +26,15 @@
     // Vendor scripts
     function medialon_theme_name_scripts() {
         wp_enqueue_script( 'app', get_template_directory_uri() . '/scripts/app.js', array ( 'jquery' ), 1.1, true);
+        wp_enqueue_script( 'modal', '//cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js', array ( 'jquery' ), 1.1, true);
     }
     add_action( 'wp_enqueue_scripts', 'medialon_theme_name_scripts' );
+
+    // Vendor styles
+    function medialon_theme_name_styles() {
+        wp_enqueue_style( 'modal', '//cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css', false);
+    }
+    add_action( 'wp_enqueue_scripts', 'medialon_theme_name_styles' );
 
 	// Post support
 	add_theme_support( 'post-thumbnails' );
@@ -135,6 +142,18 @@
             'section' => 'medialon_pages_section', // Add a default or your own section
             'label' => __( 'Set Products page' ),
             'description' => __( 'Select a page to use as the products link.' ),
+        ) );
+
+        $wp_customize->add_setting( 'medialon_pages_registration_link', array(
+            'capability' => 'edit_theme_options',
+            'sanitize_callback' => 'medialon_sanitize_dropdown_pages',
+        ) );
+
+        $wp_customize->add_control( 'medialon_pages_registration_link', array(
+            'type' => 'dropdown-pages',
+            'section' => 'medialon_pages_section', // Add a default or your own section
+            'label' => __( 'Set registration page' ),
+            'description' => __( 'Select a page to use as the registration link.' ),
         ) );
 
         function medialon_sanitize_dropdown_pages( $page_id, $setting ) {

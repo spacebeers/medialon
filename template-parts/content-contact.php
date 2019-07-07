@@ -1,3 +1,7 @@
+<?php
+    $form_id = get_field('form');
+?>
+
 <div class="slash-image" role="presentation">
     <?php the_post_thumbnail("full"); ?>
 </div>
@@ -17,7 +21,7 @@
     <div class="strip highlight">
         <section class="container">
             <div class="contents">
-                <?php echo do_shortcode('[wpforms id="16"]'); ?>
+                <?php echo do_shortcode('[wpforms id="'.$form_id.'"]'); ?>
             </div>
         </section>
     </div>

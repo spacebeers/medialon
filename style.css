@@ -213,6 +213,7 @@ ol {
 }
 .block {
   padding: 30px 20px;
+  margin-bottom: 30px;
   color: #ffffff;
 }
 .block h2,
@@ -221,6 +222,9 @@ ol {
   color: currentColor;
   padding-top: 0;
   margin-top: 0;
+}
+.block.block-dark {
+  background: #484848;
 }
 .block.block-primary {
   background: #F39200;
@@ -233,6 +237,9 @@ ol {
 }
 .block.block-secondary-dark {
   background: #16355D;
+}
+.block-button {
+  margin-bottom: 30px;
 }
 .home .site-header {
   border-bottom: 0;
@@ -312,7 +319,8 @@ ol {
   border: none;
   padding: 10px 15px;
   text-align: center;
-  background: grey;
+  background: #ffffff;
+  color: #F39200;
   border-radius: 6px;
   display: inline-block;
   text-decoration: none;
@@ -328,6 +336,7 @@ ol {
 .btn svg {
   height: 20px;
   margin: 0 7px 0 0;
+  color: currentColor;
 }
 .btn:hover {
   text-decoration: none;
@@ -502,6 +511,10 @@ ol {
   padding: 14px 21px 28px 21px;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .tabs.home-tabs li img {
   width: 75%;
@@ -524,6 +537,10 @@ ol {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .tabs li {
   cursor: pointer;
@@ -991,6 +1008,8 @@ ol {
   -webkit-flex: 0 0 100%;
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
+  position: relative;
+  z-index: 1;
 }
 @media (min-width: 768px) {
   .product-content .sidebar {
