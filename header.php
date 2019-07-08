@@ -16,7 +16,7 @@
 <body <?php body_class($page_class); ?>>
     <header class="site-header" id="header">
         <div class="container">
-            <button hidden aria-label="Click to open menu" class="menu-button" id="nav">
+            <button aria-label="Click to open menu" class="menu-button" id="nav">
                 <svg width="20px" height="20px" viewBox="0 0 20 18">
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="Icon-Set" transform="translate(-210.000000, -887.000000)" fill="currentColor">
@@ -37,7 +37,7 @@
                     'depth'           => 1
                 )); ?>
 
-                <button hidden aria-label="Click to close menu" id="close">
+                <button aria-label="Click to close menu" id="close">
                     <svg width="16px" height="16px" viewBox="0 0 16 16">
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <path d="M8,9.41421356 L2.34314575,15.0710678 C1.95282281,15.4613908 1.31996224,15.4620979 0.928932188,15.0710678 C0.538609245,14.6807449 0.538609245,14.0471772 0.928932188,13.6568542 L6.58578644,8 L0.928932188,2.34314575 C0.538609245,1.95282281 0.537902138,1.31996224 0.928932188,0.928932188 C1.31925513,0.538609245 1.95282281,0.538609245 2.34314575,0.928932188 L8,6.58578644 L13.6568542,0.928932188 C14.0471772,0.538609245 14.6807449,0.538609245 15.0710678,0.928932188 C15.4620979,1.31996224 15.4613908,1.95282281 15.0710678,2.34314575 L9.41421356,8 L15.0710678,13.6568542 C15.4613908,14.0471772 15.4613908,14.6807449 15.0710678,15.0710678 C14.6800378,15.4620979 14.0471772,15.4613908 13.6568542,15.0710678 L8,9.41421356 Z" id="Combined-Shape" fill="currentColor" fill-rule="nonzero"></path>

@@ -43,6 +43,19 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.super-title {
+    position: relative;
+
+    &::before {
+        content: attr(data-content);
+        display: block;
+        color: @secondary;
+        font-size: 1.6rem;
+        font-weight: @weight-bold;
+        margin-bottom: 10px;
+    }
+}
+
 h1 {
     margin-bottom: 30px;
     font-size: 4.0rem;
@@ -59,6 +72,23 @@ h2 {
     line-height: 1.4;
     @media (min-width: @screen-sm-min) {
         font-size: 3rem;
+    }
+}
+
+h3 {
+    font-size: 2.0rem;
+    color: @primary;
+
+    &.flair {
+        padding-top: 20px;
+
+        &::before, &::after {
+            width: 20px;
+        }
+
+        &::after {
+            left: 25px;
+        }
     }
 }
 

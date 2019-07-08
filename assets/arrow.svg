@@ -1,1 +1,2 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25"><defs><style>.a{fill:#fff;}</style></defs><path class="a" d="M18,25H9a9.01,9.01,0,0,1-9-9V9A9.01,9.01,0,0,1,9,0h9a9.01,9.01,0,0,1,9,9v7A9.01,9.01,0,0,1,18,25ZM8,11.589v2.165h7.586V17L19.9,12.671,15.586,8.342v3.247Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25">
+    <path fill="currentColor" d="M18,25H9a9.01,9.01,0,0,1-9-9V9A9.01,9.01,0,0,1,9,0h9a9.01,9.01,0,0,1,9,9v7A9.01,9.01,0,0,1,18,25ZM8,11.589v2.165h7.586V17L19.9,12.671,15.586,8.342v3.247Z"/></svg>

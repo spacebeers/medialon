@@ -1,5 +1,6 @@
 <?php
     include('classes/social_widget.php');
+    include('classes/helpers.php');
     include('classes/breadcrumbs.php');
 
     // Menus
@@ -130,18 +131,6 @@
             'section' => 'medialon_pages_section', // Add a default or your own section
             'label' => __( 'Set Contact page' ),
             'description' => __( 'Select a page to use as the contacts link.' ),
-        ) );
-
-        $wp_customize->add_setting( 'medialon_pages_products_link', array(
-            'capability' => 'edit_theme_options',
-            'sanitize_callback' => 'medialon_sanitize_dropdown_pages',
-        ) );
-
-        $wp_customize->add_control( 'medialon_pages_products_link', array(
-            'type' => 'dropdown-pages',
-            'section' => 'medialon_pages_section', // Add a default or your own section
-            'label' => __( 'Set Products page' ),
-            'description' => __( 'Select a page to use as the products link.' ),
         ) );
 
         $wp_customize->add_setting( 'medialon_pages_registration_link', array(

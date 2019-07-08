@@ -23,14 +23,16 @@ body {
     width: ~"calc(100% - 30px)";
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 15px;
+    @media (min-width: @screen-sm-min) {
+        padding: 0 15px;
+    }
 }
 
 #breadcrumbs {
     list-style: none;
     margin: 0 0 10px 0;
     overflow: hidden;
-    padding: 0;
+    padding: 15px 0 0 0;
     color: @palette-light;
     font-size: 1.4rem;
     position: relative;
@@ -59,7 +61,10 @@ body {
 }
 
 .strip {
-    padding: 75px 0;
+    padding: 35px 0;
+    @media (min-width: @screen-sm-min) {
+        padding: 75px;
+    }
 
     &.highlight {
         background: @palette-highlight;
@@ -93,5 +98,21 @@ body {
     .btn {
         display: inline-block;
         margin-top: 20px;
+    }
+}
+
+.modal {
+    .wpforms-container {
+        padding: 0 !important;
+    }
+}
+
+.blocker {
+    z-index: 3 !important;
+}
+
+.home, .page-template-default {
+    .site-footer {
+        margin-top: 75px;
     }
 }

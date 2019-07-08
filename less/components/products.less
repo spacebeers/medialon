@@ -59,6 +59,11 @@
         @media (min-width: @screen-sm-min) {
             flex-basis: 50%;
         }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
     }
 }
 
@@ -68,15 +73,6 @@
     font-weight: @weight-semibold;
     position: relative;
     margin-bottom: 25px;
-
-    &::before {
-        content: "Products";
-        display: block;
-        color: @secondary;
-        font-size: 1.6rem;
-        font-weight: @weight-bold;
-        margin-bottom: 10px;
-    }
 
     & + p {
         font-size: 2.5rem;
@@ -148,8 +144,10 @@
         flex: 0 0 100%;
         position: relative;
         z-index: 1;
+        padding: 30px 40px;
         @media (min-width: @screen-sm-min) {
             flex: 0 0 25%;
+            padding: 30px 0;
         }
     }
 }
@@ -159,29 +157,15 @@
     padding: 30px 40px;
     margin-top: 35px;
 
-    h2 {
-        font-size: 2.0rem;
-        color: @primary;
-
-        &.flair {
-            padding-top: 20px;
-
-            &::before, &::after {
-                width: 20px;
-            }
-
-            &::after {
-                left: 25px;
-            }
-        }
-    }
-
     .related-list {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
+        @media (min-width: @screen-sm-min) {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
 
         a {
+            flex: 1;
             display: block;
             text-align: center;
             color: @palette-dark;
@@ -195,7 +179,84 @@
                 width: 100%;
                 height: auto;
                 display: block;
+                margin-bottom: 10px;
             }
         }
+    }
+}
+
+.file {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 0;
+    flex-shrink: 1;
+    background: @palette-lightest;
+    transition: background-color @ani-speed linear;
+    padding: 20px;
+
+    & + .file {
+        margin-top: 30px;
+    }
+
+    &:hover {
+        background: @primary;
+
+        h3 {
+            color: @palette-lightest;
+        }
+
+        ul {
+            color: @palette-lightest;
+
+        }
+    }
+
+    .file-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .file-links {
+        position: relative;
+        z-index: 1;
+    }
+
+    h3 {
+        font-size: 2.4rem;
+        line-height: 1.2;
+        color: @primary;
+        font-weight: @weight-semibold;
+
+        a {
+            color: currentColor;
+            transition: color @ani-speed linear;
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        color: @palette-darkish;
+
+        strong {
+            width: 125px;
+            display: inline-block;
+        }
+    }
+
+    svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        height: 100%;
+        opacity: 0.4;
     }
 }

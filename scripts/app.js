@@ -38,4 +38,24 @@ jQuery(document).ready(function () {
 	   of last tab */
     jQuery('ul.tabs li').last().addClass("tab_last");
 
+    jQuery('#drivers-link').on('click', function(event) {
+        var $target = jQuery('[rel="drivers-tab"]')
+        if ($target) {
+            $target.click()
+            jQuery('body, html').animate({
+                scrollTop: $target.offset().top - jQuery('body').offset().top + jQuery('body').scrollTop()
+            }, 'fast');
+
+        }
+    })
+
+    var nav = document.querySelector('#nav');
+    nav.addEventListener('click', function (e) {
+        header.classList.add('open')
+    })
+
+    var close = document.querySelector('#close');
+    close.addEventListener('click', function (e) {
+        header.classList.remove('open')
+    })
 });

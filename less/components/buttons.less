@@ -9,6 +9,8 @@
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    opacity: 1;
+    transition: opacity @ani-speed linear;
 
     svg {
         height: 20px;
@@ -16,20 +18,38 @@
         color: currentColor;
     }
 
+    .a {
+        color: currentColor;
+    }
+
     &:hover {
         text-decoration: none;
-        color: currentColor;
+        color: @primary;
+        opacity: 0.8;
+    }
+
+    &.btn-large {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 }
 
 .btn-primary {
     background: @primary;
     color: @palette-lightest;
+
+    &:hover {
+        color: @palette-lightest;
+    }
 }
 
 .btn-secondary {
     background: @secondary;
     color: @palette-lightest;
+
+    &:hover {
+        color: @palette-lightest;
+    }
 }
 
 .btn-block {

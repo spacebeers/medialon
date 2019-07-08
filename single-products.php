@@ -11,7 +11,7 @@
                         <div class="product-hero">
                             <div class="product-hero-content">
                                 <!-- post title -->
-                                <h1><?php the_title(); ?></h1>
+                                <h1 class="super-title" data-content="Products"><?php the_title(); ?></h1>
                                 <!-- /post title -->
 
                                 <?php the_excerpt(); ?>
@@ -19,7 +19,7 @@
                                 <?php include( locate_template( 'template-parts/content-icon-list.php', false, false ) ); ?>
 
                                 <p>
-                                    <a href="" class="btn btn-primary-xs">
+                                    <a href="#quote-form" rel="modal:open" class="btn btn-primary btn-block-xs">
                                         <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
                                         Get a quote now
                                     </a>
@@ -45,7 +45,7 @@
                             <ul class="tabs">
                                 <li rel="tab1" class="active">Overview</li>
                                 <li rel="tab2">Spec<span>ifications</span></li>
-                                <li rel="tab3">Downloads <span>& Support</span></li>
+                                <li rel="drivers-tab">Downloads <span>& Support</span></li>
                             </ul>
                             <div class="tab_container">
                                 <h3 class="d_active tab_drawer_heading" rel="tab1">Overview</h3>
@@ -75,13 +75,43 @@
                                             <?php endwhile; ?>
                                         </table>
                                         <?php else : ?>
-                                            <p>No specs found</p>
+                                            <p>No specs available</p>
                                     <?php endif; ?>
                                 </div>
                                 <!-- #tab2 -->
-                                <h3 class="tab_drawer_heading" rel="tab3">Downloads & Support</h3>
-                                <div id="tab3" class="tab_content">
-                                    Files and that
+                                <h3 class="tab_drawer_heading" rel="drivers-tab">Downloads & Support</h3>
+                                <div id="drivers-tab" class="tab_content">
+                                    <h2 class="flair">Drivers, Manuals & Users Guides</h2>
+                                    <?php if( have_rows('files') ): ?>
+                                        <?php while ( have_rows('files') ) : the_row(); ?>
+                                            <article class="file">
+                                                <?php echo file_get_contents(get_template_directory_uri() . '/assets/slash.svg'); ?>
+                                                <div class="file-content">
+                                                    <h3 class="super-title" data-content="<?php the_sub_field('type'); ?>"><?php the_sub_field('name'); ?></h3>
+                                                    <ul>
+                                                        <li>
+                                                            <strong>Version: </strong>
+                                                            <span><?php the_sub_field('version'); ?></span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>Release date: </strong>
+                                                            <span><?php the_sub_field('release_date'); ?></span>
+                                                        </li>
+                                                        <li>
+                                                            <strong>Language: </strong>
+                                                            <span><?php the_sub_field('language'); ?></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="file-links">
+                                                    <?php $file = get_sub_field('file'); ?>
+                                                    <a href="<?php echo $file['url']; ?>" class="btn btn-primary btn-block btn-large" download target="_blank">Download <span> (<?php echo formatBytes($file['filesize']); ?>)</span></a>
+                                                </div>
+                                            </article>
+                                        <?php endwhile; ?>
+                                    <?php else : ?>
+                                        <p>No files available</p>
+                                    <?php endif; ?>
                                 </div>
                                 <!-- #tab3 -->
                             </div>
@@ -92,15 +122,17 @@
                             </div>
                         </div>
                         <div class="sidebar">
-                            <a href="" class="btn btn-primary btn-block block-button">
+                            <a href="#quote-form" rel="modal:open" class="btn btn-primary btn-block block-button btn-large">
                                 <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
                                 Get a quote now
                             </a>
 
+                            <div id="quote-form" class="modal">
+                                <?php echo do_shortcode('[wpforms id="99"]'); ?>
+                            </div>
 
                             <?php
                                 $file = get_field('spec_sheet');
-
                                 if ( $file ):
                                     $url = wp_get_attachment_url( $file ); ?>
                                     <div class="block block-secondary-dark">
@@ -113,14 +145,23 @@
                                     </div>
                             <?php endif; ?>
 
+                            <div class="block block-secondary">
+                                <h2>Do you need drivers?</h2>
+                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
+                                <a href="#drivers-tab" id="drivers-link" class="btn btn-primary">
+                                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                    Get drivers
+                                </a>
+                            </div>
+
                             <div class="block block-primary">
                                 <h2>Contact Support</h2>
                                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
-                                <a href="#ex1" rel="modal:open" class="btn">
+                                <a href="#support-form" rel="modal:open" class="btn">
                                     <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
                                     Contact Support
                                 </a>
-                                <div id="ex1" class="modal">
+                                <div id="support-form" class="modal">
                                     <?php echo do_shortcode('[wpforms id="81"]'); ?>
                                 </div>
                             </div>
@@ -128,7 +169,7 @@
                             <div class="block block-dark">
                                 <h2>Register your software</h2>
                                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
-                                <a href="<?php echo get_theme_mod( 'medialon_pages_registration_link' ); ?>" class="btn btn-primary">
+                                <a href="<?php echo get_permalink(get_theme_mod( 'medialon_pages_registration_link' )); ?>" class="btn btn-primary">
                                     <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
                                     Register
                                 </a>

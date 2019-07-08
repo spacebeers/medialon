@@ -1,7 +1,7 @@
 <?php $currentID = get_the_ID(); ?>
 
 <section class="related-content">
-    <h2 class="flair">Other Medialon products</h2>
+    <h3 class="flair">Other Medialon products</h3>
 
     <?php
         $the_query = new WP_Query( array( 'post_type' => 'products', 'post__not_in' => array( $currentID ) ) );

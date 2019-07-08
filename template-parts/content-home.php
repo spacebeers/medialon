@@ -13,7 +13,7 @@
             <div class="hero-content">
                 <?php the_field('hero_contents'); ?>
 
-                <a href="" class="btn btn-primary">
+                <a href="<?php echo get_post_type_archive_link( 'products' ); ?>" class="btn btn-primary">
                     <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
                     Discover our products
                 </a>
@@ -24,13 +24,11 @@
     <section class="container">
         <div class="tabs-wrapper">
             <div class="tabs-header">
-                <p>Show control solution</p>
-
-                <h2>
+                <h2 class="super-title" data-content="Show control solution">
                     <?php the_field('products_section_heading'); ?>
                 </h2>
 
-                <p>Medialon products</p>
+                <h3>Medialon products</h3>
             </div>
             <?php
             $the_query = new WP_Query('post_type=products');?>
@@ -60,7 +58,7 @@
                     </h3>
                     <div id="tab_<?php the_id(); ?>" class="tab_content">
                         <div class="tab-product-content">
-                            <h4 class="product-tab-title"><?php the_title(); ?></h4>
+                            <h4 class="product-tab-title super-title" data-content="Products"><?php the_title(); ?></h4>
                             <?php the_excerpt(); ?>
 
                             <?php include( locate_template( 'template-parts/content-icon-list.php', false, false ) ); ?>
