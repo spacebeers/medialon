@@ -60,6 +60,14 @@
 		    'settings' => 'medialon_logo',
         )));
 
+		$wp_customize->add_setting( 'medialon_logo_dark' );
+
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'medialon_logo_dark', array(
+		    'label'    => __( 'Logo (dark)', 'medialon' ),
+		    'section'  => 'medialon_logo_section',
+		    'settings' => 'medialon_logo_dark',
+        )));
+
         // Social section
         $wp_customize->add_section( 'medialon_social_section' , array(
 			'title'       => __( 'Social links', 'medialon' ),

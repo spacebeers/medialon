@@ -43,11 +43,11 @@
 				display: block;
 				position: absolute;
 				background: white;
-				bottom: -4px;
+				bottom: -19px;
 				left: 50%;
-				transform: rotate(45deg) translate(-50%, 100%);
+				transform: rotate(45deg) translateX(-50%);
 				z-index: 2;
-				border: 1px solid rgba(0, 0, 0, 0.3);
+				border: 1px solid rgba(0, 0, 0, 0.1);
 				border-left: none;
 				border-top: none;
 				transition: opacity @ani-speed linear;
@@ -74,6 +74,10 @@
 
 			&.active {
 				opacity: 1;
+
+				&::before {
+					opacity: 1;
+				}
 			}
 		}
 	}

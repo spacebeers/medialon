@@ -11,6 +11,16 @@
                 }
             }
         }
+
+        .logo_dark {
+            display: none;
+        }
+    }
+
+    .block {
+        p {
+            display: block !important;
+        }
     }
 }
 
@@ -21,5 +31,37 @@
     width: 90%;
     @media (min-width: @screen-sm-min) {
         width: 65%;
+    }
+}
+
+.press-release-column {
+    .block {
+        width: 100%;
+        margin: 0;
+        position: relative;
+        @media (min-width: @screen-sm-min) {
+            width: 60%;
+            top: 50%;
+            margin-left: 30%;
+            transform: translateY(-50%);
+        }
+
+        @media (min-width: @screen-md-min) {
+            width: 50%;
+        }
+
+    }
+}
+
+.press-release-section {
+    position: relative;
+
+    .slash-image {
+        position: absolute;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
     }
 }

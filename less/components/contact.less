@@ -1,3 +1,16 @@
+.page-template-contact-page {
+    .contents {
+        a {
+            color: @body-text-color;
+            text-decoration: none;
+
+            &:hover {
+                color: @primary;
+            }
+        }
+    }
+}
+
 .contact-form {
     background: @body-bg !important;
     padding: 35px 14px !important;
@@ -23,9 +36,13 @@
 
 
 .wpforms-submit {
-    width: 100% !important;
-    text-align: right !important;
-    background: @primary !important;
-    color: @palette-light !important;
-    border: none !important;
+    &::before {
+        content: "";
+        width: 30px;
+        background-image: url(./assets/arrow-white.svg);
+        height: 30px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 10px;
+    }
 }

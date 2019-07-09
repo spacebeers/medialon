@@ -28,6 +28,7 @@
                     <?php the_field('products_section_heading'); ?>
                 </h2>
 
+                <div class="flair-line"></div>
                 <h3>Medialon products</h3>
             </div>
             <?php
@@ -80,27 +81,35 @@
             </div>
         </div>
     </section>
-    <section class="container">
-        <div class="content-row">
-            <div class="content-column">
-                <?php the_content(); ?>
+    <section class="press-release-section strip">
+        <?php
+            $press_image = get_field('press_release_image');
+            $size = 'full'; // (thumbnail, medium, large, full or custom size)
+        ?>
+        <?php if ($press_image): ?>
+            <div class="slash-image" role="presentation">
+                <img src="<?php echo $press_image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
             </div>
-            <div class="content-column">
-                <?php $file = get_field('press_release_link'); ?>
-                <?php if ($file): ?>
-                    <div class="press-release-box">
-                        <h2>Press release</h2>
-                        <?php the_field('products_section_heading'); ?>
-                        <p>
+        <?php endif; ?>
+        <section class="container">
+            <div class="content-row">
+                <div class="content-column">
+                    <?php the_content(); ?>
+                </div>
+                <div class="content-column press-release-column">
+                    <?php $file = get_field('press_release_link'); ?>
+                    <?php if ($file): ?>
+                        <div class="block block-secondary">
+                            <h2>Press release</h2>
+                            <p><?php the_field('products_section_heading'); ?></p>
                             <a href="<?php echo $file['url']; ?>" class="btn btn-primary" download target="_blank">
                                 <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
                                 Read the press release
                             </a>
-                        </p>
-                    </div>
-                <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
-        </div>
-
+        </section>
     </section>
 </article>

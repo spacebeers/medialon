@@ -1,63 +1,63 @@
 .btn {
-    border: none;
-    padding: 10px 15px;
-    text-align: center;
-    background: @palette-lightest;
-    color: @primary;
-    border-radius: 6px;
-    display: inline-block;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    opacity: 1;
-    transition: opacity @ani-speed linear;
+    border: none !important;
+    padding: 10px 15px !important;
+    text-align: center !important;
+    background: @palette-lightest !important;
+    color: @primary !important;
+    border-radius: 6px !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    opacity: 1 !important;
+    transition: opacity @ani-speed linear !important;
 
     svg {
-        height: 20px;
-        margin: 0 7px 0 0;
-        color: currentColor;
+        height: 20px !important;
+        margin: 0 7px 0 0 !important;
+        color: currentColor !important;
     }
 
     .a {
-        color: currentColor;
+        color: currentColor !important;
     }
 
     &:hover {
-        text-decoration: none;
-        color: @primary;
-        opacity: 0.8;
+        text-decoration: none !important;
+        color: @primary !important;
+        opacity: 0.8 !important;
     }
 
     &.btn-large {
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
     }
 }
 
 .btn-primary {
-    background: @primary;
-    color: @palette-lightest;
+    background: @primary !important;
+    color: @palette-lightest !important;
 
     &:hover {
-        color: @palette-lightest;
+        color: @palette-lightest !important;
     }
 }
 
 .btn-secondary {
-    background: @secondary;
-    color: @palette-lightest;
+    background: @secondary !important;
+    color: @palette-lightest !important;
 
     &:hover {
-        color: @palette-lightest;
+        color: @palette-lightest !important;
     }
 }
 
 .btn-block {
-    width: 100%;
+    width: 100% !important;
 }
 
 .btn-block-xs {
     @media (max-width: @screen-xs-max) {
-        width: 100%;
+        width: 100% !important;
     }
 }

@@ -1,5 +1,7 @@
 <?php
-    $page_tile = get_the_title($post->ID);
+    $page_id = get_queried_object_id();
+    $page_tile = get_the_title($page_id);
+    $has_thumbnail = has_post_thumbnail($page_id) ? true : false;
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@
 </head>
 
 <body <?php body_class($page_class); ?>>
-    <header class="site-header" id="header">
+    <header class="site-header <?php if (!$has_thumbnail): echo "dark-nav"; endif; ?>" id="header">
         <div class="container">
             <button aria-label="Click to open menu" class="menu-button" id="nav">
                 <svg width="20px" height="20px" viewBox="0 0 20 18">
@@ -26,8 +28,12 @@
                 </svg>
             </button>
 
-            <a class="logo" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'>
+            <a class="logo_light" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'>
                 <img src='<?php echo esc_url( get_theme_mod( 'medialon_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'>
+            </a>
+
+            <a class="logo_dark" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'>
+                <img src='<?php echo esc_url( get_theme_mod( 'medialon_logo_dark' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'>
             </a>
 
             <nav id="main-menu">
