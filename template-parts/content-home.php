@@ -24,7 +24,7 @@
     <section class="container">
         <div class="tabs-wrapper">
             <div class="tabs-header">
-                <h2 class="super-title" data-content="Show control solution">
+                <h2>
                     <?php the_field('products_section_heading'); ?>
                 </h2>
 
@@ -101,8 +101,8 @@
                     <?php if ($file): ?>
                         <div class="block block-secondary">
                             <h2>Press release</h2>
-                            <p><?php the_field('products_section_heading'); ?></p>
-                            <a href="<?php echo $file['url']; ?>" class="btn btn-primary" download target="_blank">
+                            <p><?php the_field('press_release_content'); ?></p>
+                            <a href="<?php echo $file['url']; ?>" class="btn btn-primary" target="_blank">
                                 <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
                                 Read the press release
                             </a>

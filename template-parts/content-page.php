@@ -1,7 +1,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class("generic-page"); ?>>
     <section class="container">
         <div class="contents">
-            <?php custom_breadcrumbs(); ?>
+            <!--<?php custom_breadcrumbs(); ?>-->
 
             <h1 class="flair"><?php the_title(); ?></h1>
 

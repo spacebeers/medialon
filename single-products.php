@@ -5,7 +5,7 @@
             <section class="container">
                 <div class="">
                     <div class="product-post-content">
-                        <?php custom_breadcrumbs(); ?>
+                        <!--<?php custom_breadcrumbs(); ?>-->
                         <?php echo file_get_contents(get_template_directory_uri() . '/assets/slash.svg'); ?>
 
                         <div class="product-hero">
@@ -43,13 +43,13 @@
                     <div class="product-content">
                         <div class="tabs-wrapper product-tabs">
                             <ul class="tabs">
-                                <li rel="tab1" class="active">Overview</li>
-                                <li rel="tab2">Spec<span>ifications</span></li>
+                                <li rel="overview-tab" class="active">Overview</li>
+                                <li rel="specifications-tab">Spec<span>ifications</span></li>
                                 <li rel="drivers-tab">Downloads <span>& Support</span></li>
                             </ul>
                             <div class="tab_container">
-                                <h3 class="d_active tab_drawer_heading" rel="tab1">Overview</h3>
-                                <div id="tab1" class="tab_content tab_overview">
+                                <h3 class="d_active tab_drawer_heading" rel="overview-tab">Overview</h3>
+                                <div id="overview-tab" class="tab_content tab_overview">
                                     <?php
                                         $image = get_field('overview_image');
                                         $size = 'medium';
@@ -61,9 +61,9 @@
 
                                     <?php the_content(); ?>
                                 </div>
-                                <!-- #tab1 -->
-                                <h3 class="tab_drawer_heading" rel="tab2">Specifications</h3>
-                                <div id="tab2" class="tab_content">
+                                <!-- #overview-tab -->
+                                <h3 class="tab_drawer_heading" rel="specifications-tab">Specifications</h3>
+                                <div id="specifications-tab" class="tab_content">
                                     <h2 class="flair">Product Specifications</h2>
                                     <?php if( have_rows('specification_table') ): ?>
                                         <table class="spec-table">
@@ -74,11 +74,13 @@
                                                 </tr>
                                             <?php endwhile; ?>
                                         </table>
+
+                                        <small>Technical specifications are subject to change without prior notice.</small>
                                         <?php else : ?>
                                             <p>No specs available</p>
                                     <?php endif; ?>
                                 </div>
-                                <!-- #tab2 -->
+                                <!-- #specifications-tab -->
                                 <h3 class="tab_drawer_heading" rel="drivers-tab">Downloads & Support</h3>
                                 <div id="drivers-tab" class="tab_content">
                                     <h2 class="flair">Drivers, Manuals & Users Guides</h2>
@@ -127,53 +129,39 @@
                                 Get a quote now
                             </a>
 
-                            <div id="quote-form" class="modal">
-                                <?php echo do_shortcode('[wpforms id="99"]'); ?>
-                            </div>
+                            <?php if( have_rows('product_sidebar') ):
 
-                            <?php
-                                $file = get_field('spec_sheet');
-                                if ( $file ):
-                                    $url = wp_get_attachment_url( $file ); ?>
-                                    <div class="block block-secondary-dark">
-                                        <h2>Download the tech sheet</h2>
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
-                                        <a href="<?php echo $url; ?>" target="_blank" download class="btn btn-secondary">
+                                while( have_rows('product_sidebar') ): the_row();
+                                    // vars
+                                    $block = get_sub_field('block');
+                                    $target = $block['what_does_this_block_do'];
+
+                                    if ($target == 'tab'):
+                                        $link = "#".$block['target_tab'];
+                                    elseif ($target == 'link'):
+                                         $link = $block['link'];
+                                    elseif ($target == 'file'):
+                                         $link = $block['file']['url'];
+                                    elseif ($target == 'lightbox'):
+                                         $form = "form-modal-".$block['form'];
+                                         $link = "#".$form;
+                                    endif;
+                                ?>
+                                    <div class="block <?php echo $block['color']; ?>">
+                                        <h2><?php echo $block['title']; ?></h2>
+                                        <p><?php echo $block['content']; ?></p>
+                                        <a href="<?php echo $link; ?>"
+                                            <?php if ($target == 'tab'): echo "data-tab-target='".$block['target_tab']."'"; endif; ?>
+                                            <?php if ($target == 'lightbox'): echo "rel=\"modal:open\""; endif; ?>
+                                            <?php if ($target == 'file'): echo "target=\"_blank\""; endif; ?>
+                                            class="btn">
                                             <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
-                                            Download File
+                                            <?php echo $block['link_text']; ?>
                                         </a>
                                     </div>
+                                <?php endwhile; ?>
+
                             <?php endif; ?>
-
-                            <div class="block block-secondary">
-                                <h2>Do you need drivers?</h2>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
-                                <a href="#drivers-tab" id="drivers-link" class="btn btn-primary">
-                                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
-                                    Get drivers
-                                </a>
-                            </div>
-
-                            <div class="block block-primary">
-                                <h2>Contact Support</h2>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
-                                <a href="#support-form" rel="modal:open" class="btn">
-                                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
-                                    Contact Support
-                                </a>
-                                <div id="support-form" class="modal">
-                                    <?php echo do_shortcode('[wpforms id="81"]'); ?>
-                                </div>
-                            </div>
-
-                            <div class="block block-dark">
-                                <h2>Register your software</h2>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p>
-                                <a href="<?php echo get_permalink(get_theme_mod( 'medialon_pages_registration_link' )); ?>" class="btn btn-primary">
-                                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
-                                    Register
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -185,14 +173,25 @@
 
                 <!-- article -->
                 <article>
-
                     <h1><?php _e( 'Sorry, nothing to display.', 'medialon' ); ?></h1>
-
                 </article>
                 <!-- /article -->
 
             <?php endif; ?>
         </div>
     </article>
+
+    <div id="form-modal-99" class="modal">
+        <?php echo do_shortcode('[wpforms id="99"]'); ?>
+    </div>
+    <div id="form-modal-81" class="modal">
+        <?php echo do_shortcode('[wpforms id="81"]'); ?>
+    </div>
+    <div id="form-modal-16" class="modal">
+        <?php echo do_shortcode('[wpforms id="16"]'); ?>
+    </div>
+    <div id="form-modal-86" class="modal">
+        <?php echo do_shortcode('[wpforms id="86"]'); ?>
+    </div>
 
 <?php get_footer(); ?>

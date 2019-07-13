@@ -2,7 +2,7 @@
 	<!-- section -->
 	<section class="strip highlight">
 		<div class="container">
-			<?php custom_breadcrumbs(); ?>
+			<!--<?php custom_breadcrumbs(); ?>-->
 
 			<h1 class="flair"><?php _e( 'Products', 'medialon' ); ?></h1>
 

@@ -38,8 +38,9 @@ jQuery(document).ready(function () {
 	   of last tab */
     jQuery('ul.tabs li').last().addClass("tab_last");
 
-    jQuery('#drivers-link').on('click', function(event) {
-        var $target = jQuery('[rel="drivers-tab"]')
+    jQuery('[data-tab-target]').on('click', function(event) {
+        var goGetIt = jQuery(this).attr('data-tab-target')
+        var $target = jQuery('[rel="' + goGetIt + '"]')
         if ($target) {
             $target.click()
             jQuery('body, html').animate({

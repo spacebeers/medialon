@@ -68,11 +68,11 @@ body:not(.home) .logo_light {
   font-weight: 400;
 }
 .strip {
-  padding: 35px 0;
+  padding: 30px 0;
 }
 @media (min-width: 768px) {
   .strip {
-    padding: 75px 0;
+    padding: 55px 0;
   }
 }
 .strip.highlight {
@@ -254,12 +254,12 @@ ol {
   color: #ffffff;
   background-repeat: no-repeat;
   padding: 140px 0 55px;
-  margin-top: -75px;
+  margin-top: -100px;
 }
 @media (min-width: 768px) {
   .hero {
     padding: 250px 0 155px;
-    margin-top: -95px;
+    margin-top: -110px;
   }
 }
 .hero::before {
@@ -298,17 +298,45 @@ ol {
 .block.block-dark {
   background: #484848;
 }
+.block.block-dark .btn {
+  background: #F39200 !important;
+  color: #ffffff !important;
+}
+.block.block-dark .btn:hover {
+  color: #ffffff !important;
+}
 .block.block-primary {
   background: #F39200;
 }
 .block.block-primary-dark {
   background: #F39200;
 }
+.block.block-primary-dark .btn {
+  background: #F39200 !important;
+  color: #ffffff !important;
+}
+.block.block-primary-dark .btn:hover {
+  color: #ffffff !important;
+}
 .block.block-secondary {
   background: #195497;
 }
+.block.block-secondary .btn {
+  background: #F39200 !important;
+  color: #ffffff !important;
+}
+.block.block-secondary .btn:hover {
+  color: #ffffff !important;
+}
 .block.block-secondary-dark {
   background: #16355D;
+}
+.block.block-secondary-dark .btn {
+  background: #F39200 !important;
+  color: #ffffff !important;
+}
+.block.block-secondary-dark .btn:hover {
+  color: #ffffff !important;
 }
 .block p {
   display: none;
@@ -493,7 +521,6 @@ ol {
 .site-header nav ul a {
   color: #ffffff;
   text-decoration: none;
-  text-transform: uppercase;
 }
 .site-header button {
   background: transparent;
@@ -577,6 +604,9 @@ ol {
     width: 100% !important;
   }
 }
+.page-template-contact-page .contents {
+  margin-bottom: 30px;
+}
 .page-template-contact-page .contents a {
   color: #262626;
   text-decoration: none;
@@ -586,11 +616,11 @@ ol {
 }
 .contact-form {
   background: #ffffff !important;
-  padding: 35px 14px !important;
+  padding: 30px 14px !important;
 }
 @media (min-width: 768px) {
   .contact-form {
-    padding: 75px !important;
+    padding: 55px !important;
   }
 }
 .wpforms-field input {
@@ -1424,6 +1454,8 @@ ol {
   color: #F39200;
 }
 .site-footer .footer-columns {
+  position: relative;
+  z-index: 1;
   padding: 30px 0 15px 0;
 }
 @media (min-width: 768px) {

@@ -2,6 +2,8 @@
     include('classes/social_widget.php');
     include('classes/helpers.php');
     include('classes/breadcrumbs.php');
+    //include('classes/block-widget.php');
+
 
     // Menus
 	register_nav_menus( array(
@@ -248,6 +250,7 @@
     // Register and load the widget
     function wpb_load_widget() {
         register_widget( 'wpb_social_widget' );
+        //register_widget( 'Block_Widget' );
     }
     add_action( 'widgets_init', 'wpb_load_widget' );
 
@@ -262,5 +265,13 @@
             'current' => max(1, get_query_var('paged')),
             'total' => $wp_query->max_num_pages
         ));
+    }
+
+    add_filter('upload_mimes', 'custom_upload_mimes');
+    function custom_upload_mimes ( $existing_mimes=array() ) {
+        // add your extension to the mimes array as below
+        $existing_mimes['zip'] = 'application/zip';
+        $existing_mimes['gz'] = 'application/x-gzip';
+        return $existing_mimes;
     }
 ?>

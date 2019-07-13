@@ -9,7 +9,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class("contact-page"); ?>>
     <section class="container">
         <div class="contents">
-            <?php custom_breadcrumbs(); ?>
+            <!--<?php custom_breadcrumbs(); ?>-->
 
             <h1 class="flair"><?php the_title(); ?></h1>
 
@@ -21,7 +21,7 @@
     <div class="strip highlight">
         <section class="container">
             <div class="contents">
-                <?php echo do_shortcode('[wpforms id="'.$form_id.'"]'); ?>
+                <?php echo do_shortcode('[wpforms id="'.$form_id.'" title="true"]'); ?>
             </div>
         </section>
     </div>
