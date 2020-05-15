@@ -203,7 +203,7 @@ h6 {
 }
 h1 {
   margin-bottom: 30px;
-  font-size: 4rem;
+  font-size: 4.0rem;
   line-height: 1;
 }
 @media (min-width: 768px) {
@@ -223,7 +223,7 @@ h2 {
   }
 }
 h3 {
-  font-size: 2rem;
+  font-size: 2.0rem;
   color: #F39200;
 }
 h3.flair {
@@ -651,7 +651,7 @@ ol {
 .wpforms-submit::before {
   content: "";
   width: 30px;
-  background-image: url(./assets/arrow-white.svg);
+  background-image: url(assets/arrow-white.svg);
   height: 30px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1226,6 +1226,7 @@ ol {
   margin-bottom: 25px;
 }
 .overview-image {
+  width: 65%;
   float: right;
   margin-right: -40px;
 }
@@ -1235,6 +1236,10 @@ ol {
     display: block;
     float: none;
   }
+}
+.overview-image img {
+  width: 100%;
+  height: auto;
 }
 .spec-table {
   border-collapse: collapse;

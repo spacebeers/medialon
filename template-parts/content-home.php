@@ -1,6 +1,6 @@
 <?php
-    $image = get_field('hero_image');
-    $size = 'full'; // (thumbnail, medium, large, full or custom size)
+$image = get_field('hero_image');
+$size = 'full'; // (thumbnail, medium, large, full or custom size)
 ?>
 
 <div class="slash-image" role="presentation">
@@ -13,7 +13,7 @@
             <div class="hero-content">
                 <?php the_field('hero_contents'); ?>
 
-                <a href="<?php echo get_post_type_archive_link( 'products' ); ?>" class="btn btn-primary">
+                <a href="<?php echo get_post_type_archive_link('products'); ?>" class="btn btn-primary">
                     <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
                     Discover our products
                 </a>
@@ -32,28 +32,36 @@
                 <h3>Medialon products</h3>
             </div>
             <?php
-            $the_query = new WP_Query('post_type=products');?>
+            $args = array(
+                'numberposts'    => -1,
+                'post_type'        => 'products',
+                'meta_key'        => 'show_on_homepage',
+                'meta_value'    => '1'
+            );
+            $the_query = new WP_Query($args); ?>
             <ul class="tabs home-tabs">
                 <?php
-                    $x = 0;
-                    while ($the_query->have_posts()) : $the_query->the_post();
+                $x = 0;
+                while ($the_query->have_posts()) : $the_query->the_post();
                 ?>
-                        <li rel="tab_<?php the_id(); ?>" class="<?php if ($x == 0): echo 'active'; endif; ?>">
-                            <?php the_post_thumbnail(); ?>
-                            <?php the_title(); ?>
-                        </li>
+                    <li rel="tab_<?php the_id(); ?>" class="<?php if ($x == 0) : echo 'active';
+                                                            endif; ?>">
+                        <?php the_post_thumbnail(); ?>
+                        <?php the_title(); ?>
+                    </li>
                 <?php
                     $x++;
-                    endwhile;
-                    wp_reset_query();
+                endwhile;
+                wp_reset_query();
                 ?>
             </ul>
             <div class="tab_container home-tab-container">
                 <?php
-                    $i = 0;
-                    while ($the_query->have_posts()) : $the_query->the_post();
+                $i = 0;
+                while ($the_query->have_posts()) : $the_query->the_post();
                 ?>
-                    <h3 class="<?php if ($i == 0): echo 'd_active'; endif; ?> tab_drawer_heading" rel="tab_<?php the_id(); ?>">
+                    <h3 class="<?php if ($i == 0) : echo 'd_active';
+                                endif; ?> tab_drawer_heading" rel="tab_<?php the_id(); ?>">
                         <?php the_post_thumbnail(); ?>
                         <?php the_title(); ?>
                     </h3>
@@ -62,9 +70,9 @@
                             <h4 class="product-tab-title super-title" data-content="Products"><?php the_title(); ?></h4>
                             <?php the_excerpt(); ?>
 
-                            <?php include( locate_template( 'template-parts/content-icon-list.php', false, false ) ); ?>
+                            <?php include(locate_template('template-parts/content-icon-list.php', false, false)); ?>
 
-                            <a href="<?php the_permalink();?>" class="btn btn-primary">
+                            <a href="<?php the_permalink(); ?>" class="btn btn-primary">
                                 <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
                                 Learn more
                             </a>
@@ -75,41 +83,46 @@
                     </div>
                 <?php
                     $i++;
-                    endwhile;
-                    wp_reset_query();
+                endwhile;
+                wp_reset_query();
                 ?>
             </div>
         </div>
     </section>
-    <section class="press-release-section strip">
-        <?php
+    <?php
+    $show_callout = get_field('show_callout');
+    ?>
+    <?php if ($show_callout) : ?>
+        <section class="press-release-section strip">
+            <?php
             $press_image = get_field('press_release_image');
             $size = 'full'; // (thumbnail, medium, large, full or custom size)
-        ?>
-        <?php if ($press_image): ?>
-            <div class="slash-image" role="presentation">
-                <img src="<?php echo $press_image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-            </div>
-        <?php endif; ?>
-        <section class="container">
-            <div class="content-row">
-                <div class="content-column">
-                    <?php the_content(); ?>
+            ?>
+            <?php if ($press_image) : ?>
+                <div class="slash-image" role="presentation">
+                    <img src="<?php echo $press_image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
                 </div>
-                <div class="content-column press-release-column">
-                    <?php $file = get_field('press_release_link'); ?>
-                    <?php if ($file): ?>
-                        <div class="block block-secondary">
-                            <h2>Press release</h2>
-                            <p><?php the_field('press_release_content'); ?></p>
-                            <a href="<?php echo $file['url']; ?>" class="btn btn-primary" target="_blank">
-                                <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
-                                Read the press release
-                            </a>
-                        </div>
-                    <?php endif; ?>
+            <?php endif; ?>
+            <section class="container">
+                <div class="content-row">
+                    <div class="content-column">
+                        <?php the_content(); ?>
+                    </div>
+                    <div class="content-column press-release-column">
+                        <?php $file = get_field('press_release_link'); ?>
+                        <?php if ($file) : ?>
+                            <div class="block block-secondary">
+                                <h2><?php the_field('callout_title'); ?></h2>
+                                <p><?php the_field('press_release_content'); ?></p>
+                                <a href="<?php echo $file; ?>" class="btn btn-primary" target="_blank">
+                                    <?php echo file_get_contents(get_template_directory_uri() . '/assets/arrow.svg'); ?>
+                                    <?php the_field('callout_link_text'); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
-            </div>
+            </section>
         </section>
-    </section>
+    <?php endif; ?>
 </article>

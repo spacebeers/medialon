@@ -10,7 +10,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1.0"/>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css?cache-bust=1">
+	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css?cache-bust=1.0.1">
     <title><?php echo $page_tile; ?></title>
 	<?php wp_head(); ?>
 </head>
