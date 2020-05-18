@@ -1,6 +1,9 @@
 .archive, .single-products {
     .site-header a {
-        color: @body-text-color;
+        color: @palette-lightest;
+        @media (min-width: @screen-sm-min) {
+            color: @body-text-color;
+        }
     }
 }
 
@@ -112,6 +115,10 @@
                 }
             }
 
+            li {
+                position: relative;
+            }
+
             a {
                 color: @palette-lightest;
                 text-decoration: none;
@@ -144,5 +151,70 @@
 
     li + li {
         margin-left: 31px;
+    }
+}
+
+#menu-main-menu {
+    li {
+        padding-bottom: 15px;
+
+        &:hover {
+            ul {
+                display: block;
+            }
+        }
+    }
+
+    ul {
+        @media (min-width: @screen-sm-min) {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: @palette-lightest;
+            padding: 15px;
+            box-shadow: 0px 2px 1px 0px @seperator-color;
+            border: 1px solid @seperator-color;
+
+            &::before {
+                content: "";
+                display: block;
+                width: 16px;
+                height: 16px;
+                transform: rotate(45deg) translateX(-50%);
+                position: absolute;
+                top: -4px;
+                left: 50%;
+                background: @palette-lightest;
+                border-top: 1px solid @seperator-color;
+                border-left: 1px solid @seperator-color;
+            }
+        }
+
+        li {
+            display: block;
+            margin: 5px;
+
+            a {
+                color: @palette-lightest;
+                @media (min-width: @screen-sm-min) {
+                    color: @body-text-color;
+                }
+                white-space: nowrap;
+            }
+        }
+
+        .current-menu-item {
+            a {
+                color: @primary;
+            }
+        }
+    }
+}
+
+.current-menu-parent {
+    & > a {
+        color: @primary !important;
     }
 }

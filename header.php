@@ -10,7 +10,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1.0"/>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css?cache-bust=1.0.1">
+	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css?cache-bust=1.0.4">
     <title><?php echo $page_tile; ?></title>
 	<?php wp_head(); ?>
 </head>
@@ -40,7 +40,7 @@
                 <?php wp_nav_menu(array(
                     'theme_location'  => 'main_menu',
                     'container'       => 'ul',
-                    'depth'           => 1
+                    'depth'           => 2
                 )); ?>
 
                 <button aria-label="Click to close menu" id="close">

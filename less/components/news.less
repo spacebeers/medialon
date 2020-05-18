@@ -1,0 +1,131 @@
+.news-container {
+    @media (min-width: @screen-sm-min) {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .breadcrumbs {
+        margin: 25px 0 35px 0;
+    }
+
+    .post-image {
+        width: 100%;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    h1 {
+        margin-top: 0;
+        color: @secondary;
+    }
+
+    .news-main {
+        @media (min-width: @screen-sm-min) {
+            flex: 0 0 70%;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+        }
+    }
+
+    .news-aside {
+        @media (min-width: @screen-sm-min) {
+            flex: 0 0 25%;
+        }
+    }
+
+    .news-widget, .widget {
+        border: 12px solid @secondary;
+        padding: 18px;
+        margin-bottom: 18px;
+    }
+
+    .news-widget-primary {
+        border-color: @primary;
+    }
+}
+
+.news-grid {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-right: -9px;
+    margin-left: -9px;
+
+    & > article {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: ~"calc(100% - 18px)";
+        max-width: ~"calc(100% - 18px)";
+        margin: 0 9px 16px 9px;
+
+        @media (min-width: @screen-sm-min) {
+            flex-basis: ~"calc(50% - 18px)";
+            max-width: ~"calc(50% - 18px)";
+        }
+        background: @palette-lightest;
+        transition: background-color @ani-speed linear;
+
+        h2 {
+            line-height: 1.2;
+            color: @primary;
+            font-weight: @weight-semibold;
+
+            a {
+                color: currentColor;
+                transition: color @ani-speed linear;
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        p {
+            transition: color @ani-speed linear;
+        }
+    }
+
+    .post-image {
+        position: relative;
+        z-index: 1;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.event-list-item {
+
+    & + .event-list-item {
+        margin-top: 18px;
+    }
+
+    h4 {
+        font-size: 1.8rem;
+        margin: 0 0 8px 0;
+        a {
+            color: @secondary;
+            font-weight: @weight-semibold;
+            text-decoration: none;
+        }
+    }
+
+    p {
+        color: @palette-darkish;
+        font-size: 1.4rem;
+    }
+}
