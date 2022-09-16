@@ -16,7 +16,7 @@
     "uglify": "*"
   },
   "dependencies": {
-    "bootstrap": "^3.3.6",
+    "bootstrap": "^3.4.1",
     "line-clamp": "0.0.4"
   }
 }
